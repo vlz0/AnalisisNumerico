@@ -1,6 +1,7 @@
 from django.http import HttpResponse 
 from django.shortcuts import render 
 from django.template import Template, Context
+
 def saludo(request):  
     doc_externo=open("C:/Users/encal/Desktop/final numerico/Numerico/Numerico/plantillas/home.html") 
     plt=Template(doc_externo.read()) 
@@ -9,7 +10,18 @@ def saludo(request):
     documento=plt.render(ctx)
     return HttpResponse(documento )   
 
-def PuntoFijo(request) : 
+def biseccion(request): 
+    doc_externo=open("C:/Users/encal/Desktop/final numerico/Numerico/Numerico/plantillas/capitulo1/biseccion.html") 
+    plt=Template(doc_externo.read())  
+    doc_externo.close()  
+    ctx=Context({}) 
+    documento=plt.render(ctx)
+    return HttpResponse(documento )
+
+
+
+
+def PuntoFijo(request): 
     doc_externo=open("C:/Users/encal/Desktop/final numerico/Numerico/Numerico/plantillas/capitulo1/PuntoFijo.html") 
     plt=Template(doc_externo.read())  
     doc_externo.close()  
@@ -54,21 +66,14 @@ def RaicesMultiples(request) :
 
 
 
-def Jacobi(request): 
-    doc_externo=open("C:/Users/encal/Desktop/final numerico/Numerico/Numerico/plantillas/capitulo2/Jacobi.html") 
+def JacobiGaussSeidel(request): 
+    doc_externo=open("C:/Users/encal/Desktop/final numerico/Numerico/Numerico/plantillas/capitulo2/JacobiGaussSeidel.html") 
     plt=Template(doc_externo.read())  
     doc_externo.close()  
     ctx=Context({}) 
     documento=plt.render(ctx)
     return HttpResponse(documento )  
 
-def GaussSeidel(request): 
-    doc_externo=open("C:/Users/encal/Desktop/final numerico/Numerico/Numerico/plantillas/capitulo2/GaussSeidel.html") 
-    plt=Template(doc_externo.read())  
-    doc_externo.close()  
-    ctx=Context({}) 
-    documento=plt.render(ctx)
-    return HttpResponse(documento )  
 
 def SOR(request): 
     doc_externo=open("C:/Users/encal/Desktop/final numerico/Numerico/Numerico/plantillas/capitulo2/SOR.html") 
@@ -104,8 +109,8 @@ def Lagrange(request) :
     documento=plt.render(ctx)
     return HttpResponse(documento ) 
 
-def SplineLineal(request) : 
-    doc_externo=open("C:/Users/encal/Desktop/final numerico/Numerico/Numerico/plantillas/capitulo3/SplineLineal.html") 
+def Spline(request) : 
+    doc_externo=open("C:/Users/encal/Desktop/final numerico/Numerico/Numerico/plantillas/capitulo3/Spline.html") 
     plt=Template(doc_externo.read())  
     doc_externo.close()  
     ctx=Context({}) 
@@ -113,11 +118,5 @@ def SplineLineal(request) :
     return HttpResponse(documento ) 
 
 
-def SplineCubico(request) : 
-    doc_externo=open("C:/Users/encal/Desktop/final numerico/Numerico/Numerico/plantillas/capitulo3/SplineCubico.html") 
-    plt=Template(doc_externo.read())  
-    doc_externo.close()  
-    ctx=Context({}) 
-    documento=plt.render(ctx)
-    return HttpResponse(documento ) 
+
 

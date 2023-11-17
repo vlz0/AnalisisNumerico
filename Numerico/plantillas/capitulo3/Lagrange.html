@@ -9,6 +9,17 @@
 
     <h1>Hola desde Lagrange</h1>
 
+    <form action="#" method="post">
+        {% csrf_token %}
+        <label for="x">Valores de x:</label>
+        <input type="text" id="x" name="x" required><br><br>
+
+        <label for="y">Valores de y:</label>
+        <input type="text" id="y" name="y" required><br><br>
+
+        <input type="submit" value="Calcular"><br><br>
+    </form>
+
     <a href="{% url 'saludo' %}"><button>Volver al Home</button></a>
 
 </body>

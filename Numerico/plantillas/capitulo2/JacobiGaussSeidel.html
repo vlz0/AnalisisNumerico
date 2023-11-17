@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOR</title>
+    <title>Jacobi</title>
 </head>
 <body>
 
-    <h1>Hola desde SOR</h1>
+    <h1>Hola desde Jacobi y Gauss Seidel</h1>
 
     <form action="#" method="post">
         {% csrf_token %}
@@ -20,14 +20,11 @@
         <label for="b">Valor b:</label>
         <input type="text" id="b" name="b" required><br><br>
 
-        <label for="tolerancia">Tolerancia:</label>
-        <input type="text" id="tolerancia" name="tolerancia" required><br><br>
-
-        <label for="num_iteraciones">Numero de iteraciones:</label>
-        <input type="text" id="num_iteraciones" name="num_iteraciones" required><br><br>
-
-        <label for="w">Valor de w (entre 0 y 2):</label>
-        <input type="text" id="w" name="w" required><br><br>
+        <label for="metodo">Metodo a escoger:</label>
+        <select id="metodo" name="metodo" required>
+            <option value="opcion0">JACOBI</option>
+            <option value="opcion1">GAUSS SEIDEL</option>
+        </select><br><br>
 
         <input type="submit" value="Calcular"><br><br>
     </form>

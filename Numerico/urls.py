@@ -21,6 +21,7 @@ from Numerico import views
 urlpatterns = [
     path('admin/', admin.site.urls), 
     path('saludo/',views.saludo, name='saludo'), 
+    path('biseccion/', views.biseccion, name = 'Biseccion'), 
     path('PuntoFijo/',views.PuntoFijo,name='PuntoFijo'), 
     path('ReglaFalsa/',views.ReglaFalsa,name='ReglaFalsa'),
     path('Newton/',views.Newton,name='Newton'),
@@ -29,8 +30,7 @@ urlpatterns = [
     
     
     
-    path('Jacobi/', views.Jacobi, name = 'Jacobi'), 
-    path('GaussSeidel/', views.GaussSeidel, name = 'GaussSeidel'),  
+    path('JacobiGaussSeidel/', views.JacobiGaussSeidel, name = 'JacobiGaussSeidel'),  
     path('SOR/', views.SOR, name = 'SOR'),  
     
     
@@ -38,6 +38,6 @@ urlpatterns = [
     path('Vandermonde/', views.Vandermonde, name = 'Vandermonde'),  
     path('NewtonInterpolante/', views.NewtonInterpolante, name = 'NewtonInterpolante'),  
     path('Lagrange/', views.Lagrange, name = 'Lagrange'),  
-    path('SplineLineal/', views.SplineLineal, name = 'SplineLineal'),  
-    path('SplineCubico/', views.SplineCubico, name = 'SplineCubico'),  
+    path('Spline/', views.Spline, name = 'Spline'),  
+  
 ]

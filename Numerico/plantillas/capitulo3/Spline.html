@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newton Interpolante</title>
+    <title>Spline Lineal</title>
 </head>
 <body>
 
-    <h1>Hola desde Newton Interpolante</h1>
+    <h1>Hola desde Spline</h1>
 
     <form action="#" method="post">
         {% csrf_token %}
@@ -16,6 +16,13 @@
 
         <label for="y">Valores de y:</label>
         <input type="text" id="y" name="y" required><br><br>
+
+        <label for="grado">Grado del conjunto de datos (1, 2 o 3):</label>
+        <select id="grado" name="grado" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select><br><br>
 
         <input type="submit" value="Calcular"><br><br>
     </form>
