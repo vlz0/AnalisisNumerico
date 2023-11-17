@@ -1,0 +1,37 @@
+
+<!DOCTYPE html> 
+{% load static %}
+<html>
+<head>
+    <title>Capitulo 1</title>
+
+</head>
+<body>
+    <h1>Capitulo 1</h1>
+    
+    <ul>
+        <li><a href="{% url 'PuntoFijo' %}">Punto Fijo</a></li>
+        <li><a href="{% url 'ReglaFalsa' %}">Regla Falsa</a></li>
+        <li><a href="{% url 'Newton' %}">Newton</a></li>
+        <li><a href="{% url 'Secante' %}">Secante</a></li> 
+        <li><a href="{% url 'RaicesMultiples' %}">Raices Multiples</a></li> 
+    </ul> 
+
+    <h1>Capitulo 2</h1>
+    
+    <ul>
+        <li><a href="{% url 'Jacobi' %}">Jacobi</a></li>
+        <li><a href="{% url 'GaussSeidel' %}">Gauss Seidel</a></li>
+        <li><a href="{% url 'SOR' %}">SOR</a></li>
+    </ul>
+    <h1>Capitulo 3</h1>
+    
+    <ul>
+        <li><a href="{% url 'Vandermonde' %}">Vandermonde</a></li>
+        <li><a href="{% url 'NewtonInterpolante' %}">Newton Interpolante</a></li>
+        <li><a href="{% url 'Lagrange' %}">Lagrange</a></li>
+        <li><a href="{% url 'SplineLineal' %}">Spline Lineal</a></li> 
+        <li><a href="{% url 'SplineCubico' %}">Spline Cubico</a></li> 
+    
+    </ul>
+</body>
