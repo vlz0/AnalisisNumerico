@@ -9,13 +9,13 @@
 
     <h1>Hola desde SOR</h1>
 
-    <form action="#" method="post">
+    <form method="post" action="{% url 'SOR' %}">
         {% csrf_token %}
         <label for="x0">Valor inicial (x0):</label>
         <input type="text" id="x0" name="x0" required><br><br>
 
-        <label for="a">Valor a:</label>
-        <input type="text" id="a" name="a" required><br><br>
+        <label for="A">Valor a:</label>
+        <input type="text" id="A" name="A" required><br><br>
 
         <label for="b">Valor b:</label>
         <input type="text" id="b" name="b" required><br><br>
@@ -29,10 +29,15 @@
         <label for="w">Valor de w (entre 0 y 2):</label>
         <input type="text" id="w" name="w" required><br><br>
 
-        <input type="submit" value="Calcular"><br><br>
+        <button type="submit">Calcular</button><br><br>
     </form>
 
     <a href="{% url 'saludo' %}"><button>Volver al Home</button></a>
+
+    {% if resultado %}
+        <p>Resultado: {{ resultado }}</p>
+        <p>Iteraciones: {{ iteraciones }}</p>
+    {% endif %}
 
 </body>
 </html>

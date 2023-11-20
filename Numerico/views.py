@@ -7,7 +7,9 @@ from .Metodos.ReglaFalsa import reglaFalsa as rf
 from .Metodos.newton import newton as mn
 from .Metodos.secante import secante as sec
 from .Metodos.Multiples_Raices import MultRaices as mr
+from .Metodos.SOR import SOR
 import sympy as sp
+import numpy as np
 
 
 def crear_funcion(expr_str):
@@ -120,13 +122,24 @@ def JacobiGaussSeidel(request):
     return HttpResponse(documento )  
 
 
-def SOR(request): 
-    doc_externo=open("./Numerico/plantillas/capitulo2/SOR.html") 
-    plt=Template(doc_externo.read())  
-    doc_externo.close()  
-    ctx=Context({}) 
-    documento=plt.render(ctx)
-    return HttpResponse(documento )  
+def SOR_view(request):
+    resultado = None
+    iteraciones = None
+
+    if request.method == 'POST':
+        #try:
+            x0 = float(request.POST.get('x0'))
+            A = float(request.POST.get('A'))
+            b = float(request.POST.get('b'))
+            tol = float(request.POST.get('tolerancia'))
+            niter = int(request.POST.get('num_iteraciones'))
+            w = float(request.POST.get('w'))
+
+            resultado, iteraciones = SOR(x0, A, b, tol, niter, w)
+        #except ValueError:
+            #resultado = "Error: Ingresa valores numéricos válidos."
+
+    return render(request, 'capitulo2/SOR.html', {'resultado': resultado, 'iteraciones': iteraciones})
 
 
 def Vandermonde(request) : 

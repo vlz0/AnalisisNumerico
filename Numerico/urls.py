@@ -34,7 +34,6 @@ urlpatterns = [
     path('SOR/', views.SOR, name = 'SOR'),  
     
     
-    
     path('Vandermonde/', views.Vandermonde, name = 'Vandermonde'),  
     path('NewtonInterpolante/', views.NewtonInterpolante, name = 'NewtonInterpolante'),  
     path('Lagrange/', views.Lagrange, name = 'Lagrange'),  
