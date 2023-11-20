@@ -14,10 +14,10 @@
         <label for="x0">Valor inicial (x0):</label>
         <input type="text" id="x0" name="x0" required><br><br>
 
-        <label for="A">Valor a:</label>
+        <label for="A">Matriz A (separada por comas):</label>
         <input type="text" id="A" name="A" required><br><br>
 
-        <label for="b">Valor b:</label>
+        <label for="b">Vector b (separado por comas):</label>
         <input type="text" id="b" name="b" required><br><br>
 
         <label for="tolerancia">Tolerancia:</label>
@@ -34,9 +34,25 @@
 
     <a href="{% url 'saludo' %}"><button>Volver al Home</button></a>
 
-    {% if resultado %}
-        <p>Resultado: {{ resultado }}</p>
-        <p>Iteraciones: {{ iteraciones }}</p>
+    {% if resultados %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Iteracion</th>
+                    <th>x</th>
+                    <th>Error</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for resultado in resultados %}
+                    <tr>
+                        <td>{{ resultado.iteracion }}</td>
+                        <td>{{ resultado.x }}</td>
+                        <td>{{ resultado.error }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% endif %}
 
 </body>

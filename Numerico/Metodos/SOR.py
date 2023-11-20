@@ -1,25 +1,24 @@
 import numpy as np
 
-def SOR(x0, A, b, tol, niter, w):
+def SOR(x0, A, b, Tol, niter, w):
     c = 0
-    error = tol + 1
+    error = Tol + 1
     D = np.diag(np.diag(A))
-    L = -np.tril(A, k=-1)
-    U = -np.triu(A, k=1)
+    L = -np.tril(A, -1)
+    U = -np.triu(A, +1)
+    resultados = []
 
-    while error > tol and c < niter:
+    while error > Tol and c < niter:
         T = np.linalg.inv(D - w * L) @ ((1 - w) * D + w * U)
         C = w * np.linalg.inv(D - w * L) @ b
         x1 = T @ x0 + C
-        error = np.linalg.norm(x1 - x0, np.inf)
+        E = np.linalg.norm(x1 - x0, np.inf)
+        error = E
         x0 = x1
         c += 1
+        resultados.append({"iteracion": c, "x": x1.tolist(), "error": E})
 
-    if error < tol:
-        s = x0
-        n = c
-        return s, n
+    if error < Tol:
+        return resultados
     else:
-        s = x0
-        n = c
-        return f"Fracasó en {niter} iteraciones", n
+        return [{"iteracion": "Error", "x": "Iteraciones insuficientes", "error": ""}]

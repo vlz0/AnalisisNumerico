@@ -7,9 +7,8 @@ from .Metodos.ReglaFalsa import reglaFalsa as rf
 from .Metodos.newton import newton as mn
 from .Metodos.secante import secante as sec
 from .Metodos.Multiples_Raices import MultRaices as mr
-from .Metodos.SOR import SOR
+from .Metodos.SOR import SOR 
 import sympy as sp
-import numpy as np
 
 
 def crear_funcion(expr_str):
@@ -123,23 +122,22 @@ def JacobiGaussSeidel(request):
 
 
 def SOR_view(request):
-    resultado = None
-    iteraciones = None
+    resultados = None
 
     if request.method == 'POST':
-        #try:
-            x0 = float(request.POST.get('x0'))
-            A = float(request.POST.get('A'))
-            b = float(request.POST.get('b'))
-            tol = float(request.POST.get('tolerancia'))
-            niter = int(request.POST.get('num_iteraciones'))
+        try:
+            x0 = [float(val.strip()) for val in request.POST.get('x0').split(',')]
+            A = [[float(val.strip()) for val in row.split(',')] for row in request.POST.get('A').split(';')]
+            b = [float(val.strip()) for val in request.POST.get('b').split(',')]
+            tolerancia = float(request.POST.get('tolerancia'))
+            num_iteraciones = int(request.POST.get('num_iteraciones'))
             w = float(request.POST.get('w'))
 
-            resultado, iteraciones = SOR(x0, A, b, tol, niter, w)
-        #except ValueError:
-            #resultado = "Error: Ingresa valores numéricos válidos."
+            resultados = SOR(x0, A, b, tolerancia, num_iteraciones, w)
+        except ValueError:
+            resultados = [{"iteracion": "Error", "x": "Valores inválidos", "error": ""}]
 
-    return render(request, 'capitulo2/SOR.html', {'resultado': resultado, 'iteraciones': iteraciones})
+    return render(request, 'capitulo2/SOR.html', {'resultados': resultados})
 
 
 def Vandermonde(request) : 
