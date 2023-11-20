@@ -9,7 +9,7 @@
 
     <h1>Hola desde Punto Fijo</h1>
 
-    <form method="post" action="#">
+    <form method="post" action="">
         {% csrf_token %}
 
         <label for="funcion_f">Funcion f:</label>
@@ -31,6 +31,31 @@
     </form>
 
     <a href="{% url 'saludo' %}"><button>Volver al Home</button></a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Iteracion</th>
+                <th>xi</th>
+                <th>g(xi)</th>
+                <th>f(xi)</th>
+                <th>Error abs</th>
+                <th>Error rel</th>
+            </tr>
+        
+        </thead>
+    
+        <tbody>
+            {%if tabla_resultados %} {% for x in tabla_resultados %}
+            <tr>
+                {% for j in x %}
+                <td>{{ j }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
 
 </body>
 </html>

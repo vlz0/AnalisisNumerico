@@ -20,13 +20,13 @@ from Numerico import views
 
 urlpatterns = [
     path('admin/', admin.site.urls), 
-    path('saludo/',views.saludo, name='saludo'), 
-    path('biseccion/', views.biseccion, name = 'Biseccion'), 
-    path('PuntoFijo/',views.PuntoFijo,name='PuntoFijo'), 
-    path('ReglaFalsa/',views.ReglaFalsa,name='ReglaFalsa'),
-    path('Newton/',views.Newton,name='Newton'),
-    path('Secante/',views.Secante,name='Secante'),
-    path('RaicesMultiples/',views.RaicesMultiples,name='RaicesMultiples'),  
+    path('',views.saludo, name='saludo'), 
+    path('biseccion/', views.biseccion_view, name = 'Biseccion'), 
+    path('PuntoFijo/',views.PuntoFijo_view,name='PuntoFijo'), 
+    path('ReglaFalsa/',views.ReglaFalsa_view,name='ReglaFalsa'),
+    path('Newton/',views.Newton_view,name='Newton'),
+    path('Secante/',views.Secante_view,name='Secante'),
+    path('RaicesMultiples/',views.RaicesMultiples_view,name='RaicesMultiples'),  
     
     
     
@@ -39,5 +39,4 @@ urlpatterns = [
     path('NewtonInterpolante/', views.NewtonInterpolante, name = 'NewtonInterpolante'),  
     path('Lagrange/', views.Lagrange, name = 'Lagrange'),  
     path('Spline/', views.Spline, name = 'Spline'),  
-  
 ]
