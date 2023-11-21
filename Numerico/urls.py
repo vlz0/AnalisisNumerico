@@ -31,7 +31,7 @@ urlpatterns = [
     
     
     path('JacobiGaussSeidel/', views.JacobiGaussSeidel, name = 'JacobiGaussSeidel'),  
-    path('SOR/', views.SOR, name = 'SOR'),  
+    path('SOR/', views.SOR_view, name = 'SOR'),  
     
     
     path('Vandermonde/', views.Vandermonde, name = 'Vandermonde'),  

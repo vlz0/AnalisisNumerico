@@ -133,7 +133,7 @@ def SOR_view(request):
             num_iteraciones = int(request.POST.get('num_iteraciones'))
             w = float(request.POST.get('w'))
 
-            resultados = SOR(x0, A, b, tolerancia, num_iteraciones, w)
+            resultados = SOR.ejecutar(x0, A, b, tolerancia, num_iteraciones, w)
         except ValueError:
             resultados = [{"iteracion": "Error", "x": "Valores inválidos", "error": ""}]
 
