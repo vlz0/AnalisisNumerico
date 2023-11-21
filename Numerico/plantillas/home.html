@@ -1,37 +1,48 @@
-
-<!DOCTYPE html> 
+<!DOCTYPE html>
 {% load static %}
 <html>
 <head>
-    <title>Capitulo 1</title>
-
+    <title>ANALISIS NUMERICO</title>
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body{padding-top: 50px;}
+    </style>
 </head>
 <body>
-    <h1>Capitulo 1</h1>
-    
-    <ul>
-        <li><a href="{% url 'Biseccion' %}">Biseccion</a></li>
-        <li><a href="{% url 'PuntoFijo' %}">Punto Fijo</a></li>
-        <li><a href="{% url 'ReglaFalsa' %}">Regla Falsa</a></li>
-        <li><a href="{% url 'Newton' %}">Newton</a></li>
-        <li><a href="{% url 'Secante' %}">Secante</a></li> 
-        <li><a href="{% url 'RaicesMultiples' %}">Raices Multiples</a></li> 
-    </ul> 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Capitulo 1</h1>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="{% url 'Biseccion' %}">Biseccion</a></li>
+                    <li class="list-group-item"><a href="{% url 'PuntoFijo' %}">Punto Fijo</a></li>
+                    <li class="list-group-item"><a href="{% url 'ReglaFalsa' %}">Regla Falsa</a></li>
+                    <li class="list-group-item"><a href="{% url 'Newton' %}">Newton</a></li>
+                    <li class="list-group-item"><a href="{% url 'Secante' %}">Secante</a></li> 
+                    <li class="list-group-item"><a href="{% url 'RaicesMultiples' %}">Raices Multiples</a></li> 
+                </ul>
+            </div>
 
-    <h1>Capitulo 2</h1>
-    
-    <ul>
-        <li><a href="{% url 'JacobiGaussSeidel' %}">Jacobi y Gauss Seidel</a></li>
-        <li><a href="{% url 'SOR' %}">SOR</a></li>
-    </ul>
-    <h1>Capitulo 3</h1>
-    
-    <ul>
-        <li><a href="{% url 'Vandermonde' %}">Vandermonde</a></li>
-        <li><a href="{% url 'NewtonInterpolante' %}">Newton Interpolante</a></li>
-        <li><a href="{% url 'Lagrange' %}">Lagrange</a></li>
-        <li><a href="{% url 'Spline' %}">Spline (Lineal, Cuadrado y Cubico)</a></li> 
+            <div class="col-md-4">
+                <h1>Capitulo 2</h1>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="{% url 'JacobiGaussSeidel' %}">Jacobi y Gauss Seidel</a></li>
+                    <li class="list-group-item"><a href="{% url 'SOR' %}">SOR</a></li>
+                </ul>
+            </div>
 
-    
-    </ul>
+            <div class="col-md-4">
+                <h1>Capitulo 3</h1>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="{% url 'Vandermonde' %}">Vandermonde</a></li>
+                    <li class="list-group-item"><a href="{% url 'NewtonInterpolante' %}">Newton Interpolante</a></li>
+                    <li class="list-group-item"><a href="{% url 'Lagrange' %}">Lagrange</a></li>
+                    <li class="list-group-item"><a href="{% url 'Spline' %}">Spline (Lineal, Cuadrado y Cubico)</a></li> 
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+</html>

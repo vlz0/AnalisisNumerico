@@ -3,63 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biseccion</title>
+    <title>Bisección</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"], a button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover, a button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Hola desde Bisección</h1>
 
-    <h1>Hola desde Biseccion</h1>
+        <form method="post" action="">
+            {% csrf_token %}
 
-    <form method="post" action="">
-        {% csrf_token %} 
-        <meta charset="UTF-8">
+            <label for="funcion">Función:</label>
+            <input type="text" id="funcion" name="funcion" required>
 
-        <label for="funcion">Funcion:</label>
-        <input type="text" id="funcion" name="funcion" required><br><br>
+            <label for="a">Valor de A:</label>
+            <input type="text" id="a" name="a" required>
 
-        <label for="a">Valor de A:</label>
-        <input type="text" id="a" name="a" required><br><br>
+            <label for="b">Valor de B:</label>
+            <input type="text" id="b" name="b" required>
 
-        <label for="b">Valor de B:</label>
-        <input type="text" id="b" name="b" required><br><br>
+            <label for="tolerancia">Tolerancia:</label>
+            <input type="text" id="tolerancia" name="tolerancia" required>
 
-        <label for="tolerancia">Tolerancia:</label>
-        <input type="text" id="tolerancia" name="tolerancia" required><br><br>
+            <label for="num_iteraciones">Número máximo de iteraciones:</label>
+            <input type="number" id="num_iteraciones" name="num_iteraciones" required>
 
-        <label for="num_iteraciones">Numero maximo de iteraciones:</label>
-        <input type="number" id="num_iteraciones" name="num_iteraciones" required><br><br>
+            <button type="submit">Calcular</button>
+        </form>
 
-        <button type="submit">Calcular</button><br><br>
-    </form>
+        <a href="{% url 'saludo' %}"><button>Volver al Home</button></a>
 
-    <a href="{% url 'saludo' %}"><button>Volver al Home</button></a>
-
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Iteracion</th>
-                <th>a</th>
-                <th>xm</th>
-                <th>b</th>
-                <th>f(xm)</th>
-                <th>Error abs</th>
-                <th>Error rel</th>
-            </tr>
+        <table>
+            <thead>
+                <tr>
+                    <th>Iteración</th>
+                    <th>a</th>
+                    <th>xm</th>
+                    <th>b</th>
+                    <th>f(xm)</th>
+                    <th>Error abs</th>
+                    <th>Error rel</th>
+                </tr>
+            </thead>
         
-        </thead>
-    
-        <tbody>
-            {%if tabla_resultados %} {% for x in tabla_resultados %}
-            <tr>
-                {% for j in x %}
-                <td>{{ j }}</td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-            {% endif %}
-        </tbody>
-    </table>
+            <tbody>
+                {% if tabla_resultados %}
+                    {% for x in tabla_resultados %}
+                        <tr>
+                            {% for j in x %}
+                                <td>{{ j }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
 
-
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

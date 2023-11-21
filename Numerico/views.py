@@ -7,7 +7,6 @@ from .Metodos.ReglaFalsa import reglaFalsa as rf
 from .Metodos.newton import newton as mn
 from .Metodos.secante import secante as sec
 from .Metodos.Multiples_Raices import MultRaices as mr
-from .Metodos.SOR import SOR 
 import sympy as sp
 
 
@@ -121,23 +120,13 @@ def JacobiGaussSeidel(request):
     return HttpResponse(documento )  
 
 
-def SOR_view(request):
-    resultados = None
-
-    if request.method == 'POST':
-        try:
-            x0 = [float(val.strip()) for val in request.POST.get('x0').split(',')]
-            A = [[float(val.strip()) for val in row.split(',')] for row in request.POST.get('A').split(';')]
-            b = [float(val.strip()) for val in request.POST.get('b').split(',')]
-            tolerancia = float(request.POST.get('tolerancia'))
-            num_iteraciones = int(request.POST.get('num_iteraciones'))
-            w = float(request.POST.get('w'))
-
-            resultados = SOR.ejecutar(x0, A, b, tolerancia, num_iteraciones, w)
-        except ValueError:
-            resultados = [{"iteracion": "Error", "x": "Valores inválidos", "error": ""}]
-
-    return render(request, 'capitulo2/SOR.html', {'resultados': resultados})
+def SOR(request): 
+    doc_externo=open("./Numerico/plantillas/capitulo2/SOR.html") 
+    plt=Template(doc_externo.read())  
+    doc_externo.close()  
+    ctx=Context({}) 
+    documento=plt.render(ctx)
+    return HttpResponse(documento )  
 
 
 def Vandermonde(request) : 

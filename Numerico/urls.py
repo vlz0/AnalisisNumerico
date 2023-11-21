@@ -20,19 +20,17 @@ from Numerico import views
 
 urlpatterns = [
     path('admin/', admin.site.urls), 
-    path('',views.saludo, name='saludo'), 
+    path('',views.saludo, name='saludo'),
+    
     path('biseccion/', views.biseccion_view, name = 'Biseccion'), 
-    path('PuntoFijo/',views.PuntoFijo_view,name='PuntoFijo'), 
+    path('PuntoFijo/', views.PuntoFijo_view, name = 'PuntoFijo'), 
     path('ReglaFalsa/',views.ReglaFalsa_view,name='ReglaFalsa'),
     path('Newton/',views.Newton_view,name='Newton'),
     path('Secante/',views.Secante_view,name='Secante'),
     path('RaicesMultiples/',views.RaicesMultiples_view,name='RaicesMultiples'),  
     
-    
-    
     path('JacobiGaussSeidel/', views.JacobiGaussSeidel, name = 'JacobiGaussSeidel'),  
-    path('SOR/', views.SOR_view, name = 'SOR'),  
-    
+    path('SOR/', views.SOR, name = 'SOR'),  
     
     path('Vandermonde/', views.Vandermonde, name = 'Vandermonde'),  
     path('NewtonInterpolante/', views.NewtonInterpolante, name = 'NewtonInterpolante'),  
