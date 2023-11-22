@@ -9,12 +9,10 @@ from .Metodos.secante import secante as sec
 from .Metodos.Multiples_Raices import MultRaices as mr
 import sympy as sp
 
-
 def crear_funcion(expr_str):
     x = sp.symbols('x')
     expr = sp.sympify(expr_str)
     return sp.lambdify(x, expr, 'numpy')
-
 
 def saludo(request):  
     doc_externo=open("./Numerico/plantillas/home.html") 
@@ -46,9 +44,6 @@ def biseccion_view(request):
         'mensaje_resultado': mensaje_resultado
         })
 
-
-
-
 def PuntoFijo_view(request):
     tabla_resultados = None
     mensaje_error = None
@@ -68,8 +63,6 @@ def PuntoFijo_view(request):
         'tabla_resultados': tabla_resultados,
         'mensaje_error': mensaje_error
     })
-
-
 
 def ReglaFalsa_view(request):
     tabla_resultados = None
@@ -131,7 +124,6 @@ def Secante_view(request):
         'mensaje_error': mensaje_error
     })
 
-
 def RaicesMultiples_view(request):
     tabla_resultados = None
     mensaje_error = None
@@ -155,9 +147,6 @@ def RaicesMultiples_view(request):
         'mensaje_resultado': mensaje_resultado
     })
 
-
-
-
 def JacobiGaussSeidel(request): 
     doc_externo=open("./Numerico/plantillas/capitulo2/JacobiGaussSeidel.html") 
     plt=Template(doc_externo.read())  
@@ -165,7 +154,6 @@ def JacobiGaussSeidel(request):
     ctx=Context({}) 
     documento=plt.render(ctx)
     return HttpResponse(documento )  
-
 
 def SOR(request): 
     doc_externo=open("./Numerico/plantillas/capitulo2/SOR.html") 
@@ -175,7 +163,6 @@ def SOR(request):
     documento=plt.render(ctx)
     return HttpResponse(documento )  
 
-
 def Vandermonde(request) : 
     doc_externo=open("./Numerico/plantillas/capitulo3/Vandermonde.html") 
     plt=Template(doc_externo.read())  
@@ -183,7 +170,6 @@ def Vandermonde(request) :
     ctx=Context({}) 
     documento=plt.render(ctx)
     return HttpResponse(documento ) 
-
 
 def NewtonInterpolante(request) : 
     doc_externo=open("./Numerico/plantillas/capitulo3/NewtonInterpolante.html") 
@@ -208,7 +194,3 @@ def Spline(request) :
     ctx=Context({}) 
     documento=plt.render(ctx)
     return HttpResponse(documento ) 
-
-
-
-
