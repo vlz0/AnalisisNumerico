@@ -9,7 +9,8 @@ class newton:
 
     def reemplazar_funciones_matematicas(expr):
         x = sp.symbols('x')
-        expr_convertida = sp.sympify(expr)
+        # Asegurarse de que 'e' se interpreta como la constante matemática
+        expr_convertida = sp.sympify(expr, locals={'e': sp.exp(1)})
         expr_with_numpy = sp.lambdify(x, expr_convertida, 'numpy')
         return expr_with_numpy
 
@@ -19,8 +20,8 @@ class newton:
         # Convertir las expresiones en funciones ejecutables
         f = newton.reemplazar_funciones_matematicas(expr_f)
         df = newton.reemplazar_funciones_matematicas(expr_df)
-
         resultados = []
+        mensaje_resultado = ""
         e_abs = 1
         i = 0
         
@@ -34,7 +35,7 @@ class newton:
             resultados.append([i, x1, f(x1), e_abs, e_rel])
             
             if e_abs < tolerancia:
-                print("Solución encontrada en x =", x1, "en", i, "iteraciones.")
+                mensaje_resultado = "Solución encontrada en x =", x1, "en", i, "iteraciones."
                 break
             
             x0 = x1
@@ -69,5 +70,9 @@ class newton:
         
         return resultados
     
-    def ejecutar (expr_f, expr_df, x0, tolerancia, max_iteraciones):
-        return newton.metodo_newton(expr_f, expr_df, x0, tolerancia, max_iteraciones)
+    def ejecutar(expr_f, expr_df, x0, tolerancia, max_iteraciones):
+        try:
+            resultados = newton.metodo_newton(expr_f, expr_df, x0, tolerancia, max_iteraciones)
+            return resultados, None
+        except Exception as e:
+            return None, f"Ocurrió un error al calcular con el método de Newton: {e}"

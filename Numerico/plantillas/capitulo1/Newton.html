@@ -95,6 +95,12 @@
                 </tr>
             </thead>
         
+        {% if mensaje_error %}
+            <div class="alert alert-danger">
+                {{ mensaje_error }}
+            </div>
+        {% endif %}
+        
             <tbody>
                 {% if tabla_resultados %}
                     {% for x in tabla_resultados %}
