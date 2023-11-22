@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tabulate import tabulate 
 import sympy as sp
-import matplotlib.colors as mcolors
 
 class MultRaices:
 
@@ -49,10 +48,9 @@ class MultRaices:
                 break
         
             if i > max_iteraciones:
-                print("Solution not found for tolerance = ", tolerancia)
+                print("Solucion no encontrada para la tolerancia = ", tolerancia)
             
         headers = ["Iteraciones", "Xi", "f(x)", "Error"]
-        print(tabulate(resultados, headers=headers, tablefmt="github"))
             
         # Graficar la función y las iteraciones
         x = np.linspace(-10, 3, 1000)

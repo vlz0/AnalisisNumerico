@@ -21,7 +21,6 @@ class newton:
         f = newton.reemplazar_funciones_matematicas(expr_f)
         df = newton.reemplazar_funciones_matematicas(expr_df)
         resultados = []
-        mensaje_resultado = ""
         e_abs = 1
         i = 0
         

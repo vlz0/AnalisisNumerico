@@ -30,7 +30,7 @@ class biseccion:
             if f(c) == 0:
                 mensaje_resultado = f"Solución encontrada en x = {c}, en la iteración {i}."
                 return mensaje_resultado
-                break
+
             if f(a) * f(c) < 0:
                 b = c
             else:
