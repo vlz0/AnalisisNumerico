@@ -8,7 +8,8 @@ class MultRaices:
 
     def reemplazar_funciones_matematicas(expr):
         x = sp.symbols('x')
-        expr_convertida = sp.sympify(expr)
+        # Asegurarse de que 'e' se interpreta como la constante matemática
+        expr_convertida = sp.sympify(expr, locals={'e': sp.exp(1)})
         expr_with_numpy = sp.lambdify(x, expr_convertida, 'numpy')
         return expr_with_numpy
 
@@ -32,6 +33,7 @@ class MultRaices:
         e_abs = 1000
         i = 0
         resultados = []
+        mensaje_resultado = ""
         
         while i <= max_iteraciones:
             xActual = xAnterior - fAnterior * derivada(xAnterior) / ((derivada(xAnterior))**2 - fAnterior * derivada2(xAnterior))
@@ -43,7 +45,7 @@ class MultRaices:
             resultados.append([i,xAnterior,funcion(xAnterior),e_abs])    
             
             if e_abs<tolerancia:
-                print("Solución encontrada en x =", xAnterior, "     Iteraciones:", i-1, "    Error =", e_abs)
+                mensaje_resultado = f"Solución encontrada en x =", xAnterior, " Iteraciones:", i-1, " Error =", e_abs
                 break
         
             if i > max_iteraciones:
@@ -70,7 +72,11 @@ class MultRaices:
         plt.grid(True)
         plt.show()
 
-        return resultados
+        return resultados, mensaje_resultado
     
     def ejecutar(expr_f, expr_df, expr_d2f, x0, tolerancia, max_iteraciones):
-        return MultRaices.raices_multiples(expr_f, expr_df, expr_d2f, x0, tolerancia, max_iteraciones)
+        try:
+            resultados, mensaje_resultado = MultRaices.raices_multiples(expr_f, expr_df, expr_d2f, x0, tolerancia, max_iteraciones)
+            return resultados, mensaje_resultado
+        except Exception as e:
+            return None, f"Ocurrió un error al calcular las raíces múltiples: {e}"

@@ -7,14 +7,16 @@ class biseccion:
     
     def reemplazar_funciones_matematicas(expr):
         x = sp.symbols('x') 
-        expr_convertida = sp.sympify(expr)
+        expr_convertida = sp.sympify(expr, locals={'e': sp.exp(1)})
         expr_with_numpy = sp.lambdify(x, expr_convertida, 'numpy')
         return expr_with_numpy
-
+    
     def biseccion(f, a, b, tol, max_iter):
         resultados = []
+        mensaje_resultado = ""
         if f(a) * f(b) >= 0:
-            print("El intervalo no cambia de signo.")
+            mensaje_resultado = "El intervalo [a,b] no cambia de signo"
+            return resultados, mensaje_resultado
 
         e_abs = abs(b - a)
         c_t = a  # Inicializar c_t para calcular el error relativo en la primera iteración
@@ -26,7 +28,8 @@ class biseccion:
             c_t = c
 
             if f(c) == 0:
-                print("Solución encontrada en x =", c)
+                mensaje_resultado = f"Solución encontrada en x = {c}, en la iteración {i}."
+                return mensaje_resultado
                 break
             if f(a) * f(c) < 0:
                 b = c
@@ -37,13 +40,12 @@ class biseccion:
             resultados.append([i, a_ant, c, b, f(c), e_abs, e_rel])
 
             if e_abs < tol:
-                print("Solución encontrada en x =", c, ", Iteración:", i)
+                mensaje_resultado = f"Solución encontrada en x = {c}, en la iteración {i}."
                 break
             i += 1
 
         if i > max_iter:
-            print("Solución no encontrada para la tolerancia:", tol, "Iteraciones Utilizadas", i - 1)
-        
+            mensaje_resultado= "Solucion no encontrada para la tolerancia especificada"
 
         x = np.linspace(-10, 10, 1000)
         y = f(x)
@@ -57,9 +59,12 @@ class biseccion:
         plt.legend()
         plt.grid(True)
         plt.show()
-        return resultados
+        return resultados, mensaje_resultado
         
 
     def ejecutar(f, a, b, tol, max_iter):
-        # Llama al método biseccion aquí
-        return biseccion.biseccion(f, a, b, tol, max_iter)
+        try:
+            resultados, mensaje_resultado = biseccion.biseccion(f, a, b, tol, max_iter)
+            return resultados, mensaje_resultado
+        except Exception as e:
+            return None, f"Ocurrió un error al calcular la biseccion: {e}"

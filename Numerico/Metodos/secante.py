@@ -6,11 +6,13 @@ from tabulate import tabulate as tab
 class secante:
 
     def actualizar_expresion(expresion):
-        patron = r'\b(sin|cos|tan|sqrt|exp|log|log10)|(\*\*|\^|\+|\-|\*|\/)'
-        
+        # Se añade 'e' como una constante reconocida
+        patron = r'\b(sin|cos|tan|sqrt|exp|log|log10|e)|(\*\*|\^|\+|\-|\*|\/)'
         
         def sustituir(correspondencia):
             if correspondencia.group(1):
+                if correspondencia.group(1) == 'e':
+                    return 'np.e'  # Usar np.e para la constante de Euler
                 return f'np.{correspondencia.group(1)}'
             elif correspondencia.group(2) == '^':
                 return '**'
@@ -70,6 +72,10 @@ class secante:
         return tabla_resultados
     
     def ejecutar(expr, x_0, x_1, tolerancia, max_iteraciones):
-        return secante.metodo_secante(expr, x_0, x_1, tolerancia, max_iteraciones)
+        try:
+            resultados = secante.metodo_secante(expr, x_0, x_1, tolerancia, max_iteraciones)
+            return resultados, None
+        except Exception as e:
+            return None, f"Ocurrió un error al calcular la secante: {e}"
 
 

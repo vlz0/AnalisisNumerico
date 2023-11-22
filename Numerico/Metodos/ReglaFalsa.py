@@ -4,12 +4,14 @@ from tabulate import tabulate
 import sympy as sp
 
 class reglaFalsa:
+
     def reemplazar_funciones_matematicas(expr):
         x = sp.symbols('x')
-        expr_convertida = sp.sympify(expr)
+        # Asegurarse de que 'e' se interpreta como la constante matemática
+        expr_convertida = sp.sympify(expr, locals={'e': sp.exp(1)})
         expr_with_numpy = sp.lambdify(x, expr_convertida, 'numpy')
         return expr_with_numpy
-
+    
     def false_position_method(expr, a, b, tol, n):
         func = reglaFalsa.reemplazar_funciones_matematicas(expr)
         f = lambda x: func(x)
@@ -59,4 +61,8 @@ class reglaFalsa:
         return resultados
 
     def ejecutar(expr, a, b, tol, n):
-        return reglaFalsa.false_position_method(expr, a, b, tol, n)
+        try:
+            resultados = reglaFalsa.false_position_method(expr, a, b, tol, n)
+            return resultados, None
+        except Exception as e:
+            return None, f"Ocurrió un error al calcular la regla falsa: {e}"

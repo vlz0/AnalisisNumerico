@@ -95,6 +95,13 @@
                     <th>Error rel</th>
                 </tr>
             </thead>
+
+        {% if mensaje_error %}
+            <div class="alert alert-danger">
+                {{ mensaje_error }}
+            </div>
+        {% endif %}
+        
         
             <tbody>
                 {% if tabla_resultados %}

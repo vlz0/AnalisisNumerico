@@ -6,10 +6,13 @@ from tabulate import tabulate as tab
 class puntoFijo:
 
     def convertir_expresiones(expresion):
-        patron = r'\b(sin|cos|tan|sqrt|exp|log|log10)|(\*\*|\^|\+|\-|\*|\/)'
+        # Añadir 'e' a la lista de funciones matemáticas
+        patron = r'\b(sin|cos|tan|sqrt|exp|log|log10|e)|(\*\*|\^|\+|\-|\*|\/)'
         
         def sustituir(match):
             if match.group(1):
+                if match.group(1) == 'e':
+                    return 'np.e'  # Usar np.e para la constante de Euler
                 return f'np.{match.group(1)}'
             elif match.group(2) == '^':
                 return '**'
@@ -64,4 +67,8 @@ class puntoFijo:
 
 
     def ejecutar(expr_f, expr_g, x_inicial, tolerancia, iteraciones_maximas):
-        return puntoFijo.metodo_punto_fijo(expr_f, expr_g, x_inicial, tolerancia, iteraciones_maximas)        
+        try:
+            resultados = puntoFijo.metodo_punto_fijo(expr_f, expr_g, x_inicial, tolerancia, iteraciones_maximas)
+            return resultados, None
+        except Exception as e:
+            return None, f"Ocurrió un error al calcular el punto fijo: {e}"    
