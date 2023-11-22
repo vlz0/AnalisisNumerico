@@ -17,5 +17,14 @@ function [pol] = Lagrange(x,y)
         Tabla(i,:)=y(i)*Li/den;
     end
     pol=sum(Tabla);
-
+    % Graficar el polinomio interpolante
+    figure;
+    xx = linspace(min(x), max(x), 1000);
+    yy = polyval(polinomio, xx);
+    plot(x, y, 'o', xx, yy, '-');
+    title('Polinomio de Interpolación de Lagrange');
+    xlabel('x');
+    ylabel('y');
+    legend('Datos', 'Polinomio Interpolante');
+    grid on;
 end
